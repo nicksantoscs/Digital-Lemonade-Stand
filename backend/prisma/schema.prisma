@@ -2,11 +2,54 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model Beverage {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  price       Decimal // Changed from float for currency
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  orderItems OrderItem[]  // Relation to order items
+
+  @@map("beverages")
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  customerName  String
+  customerEmail String
+  totalPrice    Decimal
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  orderItems    OrderItem[]
+
+  @@map("orders")
+}
+
+// Creating a junction table for many-to-many relationship. 
+// I want to track quantity for each order as I assume that an order can have multiple beverages.
+model OrderItem {
+  id         String  @id @default(uuid())
+  quantity   Int  
+  price      Decimal
+  orderId    String
+  beverageId String
+
+  // Relations
+  order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  beverage Beverage @relation(fields: [beverageId], references: [id])
+
+  @@map("order_items")
 }
