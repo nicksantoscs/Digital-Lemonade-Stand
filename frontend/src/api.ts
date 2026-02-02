@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Beverage, Order } from './types';
+import type { Beverage, OrderRequest } from './types';
 
 const API_BASE_URL = 'http://localhost:3001/api';
 
@@ -9,7 +9,7 @@ export const api = {
         return response.data;
     },
 
-    createOrder: async (order: Order) => {
+    createOrder: async (order: OrderRequest) => {
         const response = await axios.post(`${API_BASE_URL}/orders`, order);
         return response.data;
     }
