@@ -78,7 +78,7 @@ function App() {
       <div className="app-container" style={{ textAlign: 'center', marginTop: '50px' }}>
         <h1>Order Placed!</h1>
         <p>Thank you, {name}. Your order is on the way!</p>
-        <button onClick={() => {
+        <button type="button" onClick={() => {
           setStatus('idle');
           setName('');
           setEmail('');
@@ -100,19 +100,23 @@ function App() {
               <img
                 src={bev.imageUrl}
                 alt={bev.name}
+                className="beverage-image"
                 style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', marginBottom: '8px' }}
               />
             )}
-            <div style={{ fontWeight: 'bold' }}>{bev.name}</div>
-            {bev.description && (
-              <div style={{ color: '#555', marginTop: '4px' }}>{bev.description}</div>
-            )}
-            <div>${Number(bev.price).toFixed(2)}</div>
-            
-            <div className="controls">
-              <button onClick={() => updateQuantity(bev.id, -1)} disabled={!cart[bev.id]}>-</button>
-              <span style={{ margin: '0 10px' }}>{cart[bev.id] || 0}</span>
-              <button onClick={() => updateQuantity(bev.id, 1)}>+</button>
+            <div className="beverage-info">
+              <div className="beverage-name" style={{ fontWeight: 'bold' }}>{bev.name}</div>
+              {bev.description && (
+                <div className="beverage-description" style={{ color: '#555', marginTop: '4px' }}>{bev.description}</div>
+              )}
+            </div>
+            <div className="beverage-actions">
+              <div className="beverage-price">${Number(bev.price).toFixed(2)}</div>
+              <div className="controls">
+                <button className="qty-btn" onClick={() => updateQuantity(bev.id, -1)} disabled={!cart[bev.id]}>-</button>
+                <span style={{ margin: '0 10px' }}>{cart[bev.id] || 0}</span>
+                <button className="qty-btn" onClick={() => updateQuantity(bev.id, 1)}>+</button>
+              </div>
             </div>
           </div>
         ))}

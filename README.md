@@ -81,3 +81,8 @@ npm run dev
 * React (Vite)
 * TypeScript
 * Axios: Handles HTTP requests with cleaner syntax than the native Fetch API.
+
+### Screenshots
+![Main Menu (Empty Cart)](frontend/public/empty_cart.png)
+![Main Menu (Filled Cart)](frontend/public/beverage_menu.png)
+![Order Placed](frontend/public/order_placed.png)

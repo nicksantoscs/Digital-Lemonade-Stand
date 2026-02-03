@@ -5,6 +5,19 @@
   text-align: center;
 }
 
+body {
+  background: #f2e5d2;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #3b2a1a;
+}
+
+.app-container h1 {
+  background: #7a4a21;
+  color: #f7f1e6;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,25 +31,45 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.beverage-item {
+  background: #faf2e8;
+}
+
+.qty-btn {
+  background: #d1ae4a;
+  color: #3b2a1a;
+  border: 1px solid #b99236;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 0 #f7efda inset;
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #c39c3d;
+}
+
+.qty-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.qty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  background: #2f4f2f;
+  color: #f7f1e6;
+  border: 1px solid #213821;
 }
