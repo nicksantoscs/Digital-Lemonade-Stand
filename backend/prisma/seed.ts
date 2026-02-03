@@ -16,15 +16,21 @@ async function main() {
     data: [
       {
         name: 'Classic Lemonade',
+        description: 'A classic, chilled blend of real lemon juice, water, and organic cane sugar.',
+        imageUrl: '/lemonade.png',
         price: 2.00,
       },
       {
         name: 'Strawberry Fizz',
+        description: 'Ripe strawberry flavor meets sparkling water for a light, fruity, and refreshingly bubbly drink.',
+        imageUrl: '/strawberry_fizz.png',
         price: 3.00,
       },
       {
         name: 'Iced Tea',
-        price: 2.00,
+        description: 'A smooth, lightly sweetened black tea served ice cold',
+        imageUrl: '/iced_tea.png',
+        price: 2.50,
       },
     ],
   });

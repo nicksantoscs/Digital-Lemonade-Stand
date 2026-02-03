@@ -69,6 +69,10 @@ function App() {
     }
   };
 
+  const clearCart = () => {
+    setCart({});
+  };
+
   if (status === 'success') {
     return (
       <div className="app-container" style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -92,7 +96,17 @@ function App() {
         <h2>Beverages</h2>
         {beverages.map(bev => (
           <div key={bev.id} className="beverage-item" style={{ marginBottom: '1rem', border: '1px solid #ccc', padding: '10px' }}>
+            {bev.imageUrl && (
+              <img
+                src={bev.imageUrl}
+                alt={bev.name}
+                style={{ width: '120px', height: '120px', objectFit: 'cover', borderRadius: '8px', marginBottom: '8px' }}
+              />
+            )}
             <div style={{ fontWeight: 'bold' }}>{bev.name}</div>
+            {bev.description && (
+              <div style={{ color: '#555', marginTop: '4px' }}>{bev.description}</div>
+            )}
             <div>${Number(bev.price).toFixed(2)}</div>
             
             <div className="controls">
@@ -134,6 +148,9 @@ function App() {
           
           <button type="submit" disabled={status === 'submitting'}>
             {status === 'submitting' ? 'Placing Order...' : 'Place Order'}
+          </button>
+          <button type="button" onClick={clearCart} style={{ marginLeft: '10px' }} disabled={status === 'submitting'}>
+            Clear Cart
           </button>
 
           {status === 'error' && <p style={{ color: 'red' }}>Failed to place order. Try again.</p>}
